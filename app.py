@@ -88,13 +88,13 @@ footer             { visibility: hidden; }
     margin-bottom: 20px;
 }
 .hero h1 {
-    font-size: 38px;
+    font-size: 48px;
     font-weight: 800;
     color: #111827;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    margin-bottom: 14px;
-    max-width: 700px;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    max-width: 760px;
 }
 .hero h1 em {
     font-style: normal;
@@ -397,14 +397,31 @@ footer             { visibility: hidden; }
 
 /* ── CTA ── */
 .cta-block {
-    background: #F9FAFB;
-    border: 1px solid #E5E7EB;
-    border-radius: 8px;
-    padding: 36px;
+    background: #0047BB;
+    border-radius: 12px;
+    padding: 56px 48px;
     text-align: center;
+    margin-top: 8px;
 }
-.cta-block h3 { font-size: 20px; font-weight: 800; color: #111827; letter-spacing: -0.02em; margin-bottom: 10px; }
-.cta-block p  { font-size: 14px; color: #6B7280; line-height: 1.7; max-width: 560px; margin: 0 auto; }
+.cta-block .cta-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: 16px;
+}
+.cta-block h3 {
+    font-size: 36px; font-weight: 800; color: #fff;
+    letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px;
+}
+.cta-block h3 em { font-style: normal; color: #93C5FD; }
+.cta-block .cta-sub {
+    font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7;
+    max-width: 520px; margin: 0 auto 28px;
+}
+.cta-block .cta-punch {
+    display: inline-block;
+    font-size: 13px; font-weight: 700; color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 6px; padding: 10px 24px; letter-spacing: 0.02em;
+}
 
 /* ── DIVIDER ── */
 .div { border: none; border-top: 1px solid #E5E7EB; margin: 40px 0; }
@@ -678,7 +695,6 @@ st.markdown("""
     <th>Failures Detected</th>
     <th>Advance Warning</th>
     <th>False Alarm Rate</th>
-    <th>Best Suited For</th>
 </tr>
 </thead>
 <tbody>
@@ -687,28 +703,24 @@ st.markdown("""
     <td>4 of 4</td>
     <td>~7.5 hours</td>
     <td>Low</td>
-    <td>Daily production monitoring</td>
 </tr>
 <tr>
     <td class="td-name">Gradient Boosting + Explainability layer</td>
     <td>4 of 4</td>
     <td>~7.8 hours</td>
     <td>Low</td>
-    <td>Regulatory audit trails</td>
 </tr>
 <tr>
     <td class="td-name">Deep Learning (neural network)</td>
     <td>4 of 4</td>
     <td>~9.2 hours</td>
     <td>Higher — conservative by design</td>
-    <td>Zero-miss critical batches</td>
 </tr>
 <tr class="row-best">
-    <td class="td-name td-best">Combined ensemble model <span class="td-badge badge-rec">Recommended</span></td>
+    <td class="td-name td-best">Combined ensemble model</td>
     <td class="td-best">4 of 4</td>
     <td class="td-best">~8.3 hours</td>
     <td class="td-best">Very low (9 in 10 alerts genuine)</td>
-    <td>Production deployment</td>
 </tr>
 </tbody>
 </table>
@@ -813,14 +825,14 @@ st.markdown('<hr class="div">', unsafe_allow_html=True)
 # ═══════════════════════════════════════════════════════════════
 st.markdown("""
 <div class="cta-block">
-    <h3>One dataset away from a real answer.</h3>
-    <p>
-        The model is built and tested. The framework is ready to run on real sensor data.
-        The only step remaining is validation against actual SUS freeze & thaw hardware data —
-        to confirm performance and calibrate for production deployment.
-        <br><br>
-        <strong>One data-sharing agreement. One test run. A clear, evidence-based answer.</strong>
+    <div class="cta-eyebrow">Next Step</div>
+    <h3>One dataset away from<br>a <em>real</em> answer.</h3>
+    <p class="cta-sub">
+        The model is built. The framework runs on standard sensor data formats already
+        captured by SUS hardware. One data-sharing agreement is all that stands between
+        a proof of concept and a production-ready intelligence layer.
     </p>
+    <div class="cta-punch">One test run. A clear, evidence-based answer.</div>
 </div>
 """, unsafe_allow_html=True)
 
