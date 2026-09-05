@@ -1,6 +1,22 @@
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
+import base64
+import os
+
+# ── Load profile photo ────────────────────────────────────────
+def _load_photo():
+    candidates = [
+        os.path.join(os.path.dirname(__file__), "shaziabyat.jpg"),
+        "shaziabyat.jpg",
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            with open(p, "rb") as f:
+                return "data:image/jpeg;base64," + base64.b64encode(f.read()).decode()
+    return None
+
+PHOTO_SRC = _load_photo()
 
 st.set_page_config(
     page_title="Cold Chain Intelligence | Single Use Support",
@@ -855,15 +871,19 @@ st.markdown('<hr class="div">', unsafe_allow_html=True)
 # ═══════════════════════════════════════════════════════════════
 # ABOUT
 # ═══════════════════════════════════════════════════════════════
-st.markdown("""
+_avatar_html = (
+    f'<img src="{PHOTO_SRC}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;">'
+    if PHOTO_SRC else
+    '<div class="about-avatar">BJ</div>'
+)
+st.markdown(f"""
 <div class="about-card">
-    <div class="about-avatar">BJ</div>
+    {_avatar_html}
     <div class="about-info">
-        <h4>Bshazia Jatoi</h4>
-        <div class="about-title">Business Intelligence · Single Use Support</div>
+        <h4>Shazia Jatoi</h4>
+        <div class="about-title">Working Student · Data Engineer · Single Use Support</div>
         <p>
-            Built entirely outside working hours as a personal research project.
-            Five ML models trained and validated on pharmaceutical cold chain data —
+            Five ML models trained and validated on pharmaceutical cold chain research data —
             motivated by a genuine belief that SUS hardware can do more than monitor.
             It can predict.
         </p>
