@@ -620,35 +620,71 @@ fig.add_hrect(y0=2, y1=8, fillcolor="rgba(16,185,129,0.08)",
     annotation_position="top left",
     annotation_font=dict(color="#059669", size=11))
 
+# Normal segment — always shown
 fig.add_trace(go.Scatter(x=HOURS[:DRIFT_I+1], y=TEMP[:DRIFT_I+1],
     mode='lines', name='Normal', line=dict(color='#0047BB', width=2),
     hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
-fig.add_trace(go.Scatter(x=HOURS[DRIFT_I:FAIL_I+1], y=TEMP[DRIFT_I:FAIL_I+1],
-    mode='lines', name='Pre-failure drift',
-    line=dict(color='#D97706', width=2),
-    hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
-fig.add_trace(go.Scatter(x=HOURS[FAIL_I:], y=TEMP[FAIL_I:],
-    mode='lines', name='Excursion',
-    line=dict(color='#DC2626', width=2),
-    hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
 
 if "Traditional" in mode:
+    # Show full drift + excursion — alarm fires too late
+    fig.add_trace(go.Scatter(x=HOURS[DRIFT_I:FAIL_I+1], y=TEMP[DRIFT_I:FAIL_I+1],
+        mode='lines', name='Pre-failure drift',
+        line=dict(color='#D97706', width=2),
+        hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
+    fig.add_trace(go.Scatter(x=HOURS[FAIL_I:], y=TEMP[FAIL_I:],
+        mode='lines', name='Excursion',
+        line=dict(color='#DC2626', width=2.5),
+        hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
     cross_i = next((i for i in range(DRIFT_I, len(TEMP)) if TEMP[i] >= 8), FAIL_I)
     fig.add_vline(x=HOURS[cross_i], line=dict(color="#DC2626", width=1.5, dash="dash"),
         annotation_text="Alarm fires — batch already compromised",
         annotation_position="top right",
         annotation_font=dict(color="#DC2626", size=12))
     fig.add_hline(y=8, line=dict(color="#DC2626", width=1, dash="dot"))
+
 else:
-    fig.add_vrect(x0=HOURS[ALERT_I], x1=HOURS[FAIL_I],
-        fillcolor="rgba(217,119,6,0.08)", line=dict(width=0))
+    # Drift shown only up to the alert point
+    fig.add_trace(go.Scatter(x=HOURS[DRIFT_I:ALERT_I+1], y=TEMP[DRIFT_I:ALERT_I+1],
+        mode='lines', name='Pre-failure drift',
+        line=dict(color='#D97706', width=2),
+        hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
+
+    # What would have happened — faint dashed red (no intervention)
+    fig.add_trace(go.Scatter(x=HOURS[ALERT_I:], y=TEMP[ALERT_I:],
+        mode='lines', name='Without action (what-if)',
+        line=dict(color='#DC2626', width=1.5, dash='dot'),
+        opacity=0.28,
+        hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
+
+    # Recovery line — team acted on the alert, temperature returns to safe zone
+    T_alert = float(TEMP[ALERT_I])
+    T_target = 4.5
+    n_rec = len(TEMP) - ALERT_I
+    temp_recovery = np.round(
+        np.array([T_target + (T_alert - T_target) * np.exp(-k / 18.0) for k in range(n_rec)]), 1)
+    fig.add_trace(go.Scatter(x=HOURS[ALERT_I:], y=temp_recovery,
+        mode='lines', name='With early intervention',
+        line=dict(color='#059669', width=2.5),
+        hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
+
+    # Alert vertical line
     fig.add_vline(x=HOURS[ALERT_I], line=dict(color="#D97706", width=1.5, dash="dash"),
         annotation_text="Predictive alert — 8+ hours before failure",
         annotation_position="top right",
         annotation_font=dict(color="#D97706", size=12))
-    fig.add_annotation(x=HOURS[min(FAIL_I+8, len(HOURS)-1)], y=21,
-        text="Batch saved", font=dict(color="#059669", size=12),
-        showarrow=False, bgcolor="#F0FDF4", bordercolor="#059669", borderwidth=1, borderpad=8)
+
+    # Action window shading
+    fig.add_vrect(x0=HOURS[ALERT_I], x1=HOURS[FAIL_I],
+        fillcolor="rgba(217,119,6,0.07)", line=dict(width=0))
+
+    # "Batch secured" label on the green line end
+    fig.add_annotation(
+        x=HOURS[-1], y=float(temp_recovery[-1]) + 1.5,
+        text="✓ Batch secured", showarrow=True, arrowhead=2,
+        arrowcolor="#059669", ax=-50, ay=0,
+        font=dict(color="#059669", size=12, family="Inter"),
+        bgcolor="#F0FDF4", bordercolor="#059669", borderwidth=1, borderpad=7)
+
     fig.add_annotation(x=(HOURS[ALERT_I]+HOURS[FAIL_I])/2, y=-0.5,
         text="8+ hours to reroute · replace cooling · alert team",
         font=dict(color="#92400E", size=11), showarrow=False,
