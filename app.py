@@ -4,19 +4,20 @@ import plotly.graph_objects as go
 import base64
 import os
 
-# ── Load profile photo ────────────────────────────────────────
-def _load_photo():
+# ── Load images ────────────────────────────────────────────────
+def _load_img(filename, mime="image/jpeg"):
     candidates = [
-        os.path.join(os.path.dirname(__file__), "shaziabyat.jpg"),
-        "shaziabyat.jpg",
+        os.path.join(os.path.dirname(__file__), filename),
+        filename,
     ]
     for p in candidates:
         if os.path.exists(p):
             with open(p, "rb") as f:
-                return "data:image/jpeg;base64," + base64.b64encode(f.read()).decode()
+                return f"data:{mime};base64," + base64.b64encode(f.read()).decode()
     return None
 
-PHOTO_SRC = _load_photo()
+PHOTO_SRC    = _load_img("shaziabyat.jpg")
+COMPARE_SRC  = _load_img("comparission_chart.png", "image/png")
 
 st.set_page_config(
     page_title="Cold Chain Intelligence | Single Use Support",
@@ -487,11 +488,11 @@ st.markdown("""
 <div class="top-nav">
     <div class="nav-brand">
         <div class="nav-brand-dot"></div>
-        Cold Chain Intelligence
+        Cold Chain Research
     </div>
     <div class="nav-status">
         <div class="nav-status-dot"></div>
-        Proof of Concept — Pending Real Data Validation
+        Research Project — Awaiting Real SUS Data for Validation
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -502,16 +503,17 @@ st.markdown("""
 st.markdown("""
 <div class="hero-full">
   <div class="hero-inner">
-    <div class="hero-tag">Pharmaceutical Cold Chain · Predictive Intelligence</div>
-    <h1>What if your freeze &amp; thaw platforms could<br>predict failure <em>before</em> it happens?</h1>
+    <div class="hero-tag">Masters Research · Machine Learning · Pharma Cold Chain</div>
+    <h1>Can cold chain failures be predicted<br><em>hours before</em> they happen?</h1>
     <p class="hero-body">
-        A predictive intelligence layer for pharmaceutical cold chain hardware —
-        detecting temperature excursion risk hours in advance, giving customers
-        real time to protect their batch. Not a smarter alarm. A fundamentally different approach.
+        A personal research project applying machine learning to pharmaceutical cold chain
+        temperature data — investigating whether subtle patterns that precede equipment
+        failure can be detected in advance. Five models built and tested on public research data.
+        Results are promising. Real data validation is the missing piece.
     </p>
     <div class="hero-notice">
-        Proof of concept — numbers are based on research data and require
-        validation against real SUS sensor hardware before any production commitment.
+        All results are from a public research dataset — not from SUS production hardware.
+        Performance on real SUS sensors is unknown until validated. That is exactly what this research is asking for.
     </div>
   </div>
 </div>
@@ -528,22 +530,22 @@ st.markdown("""
     <div class="metric-cell">
         <div class="val accent">8+ hrs</div>
         <div class="lbl">Advance Warning</div>
-        <div class="sub">on research dataset</div>
+        <div class="sub">on public research dataset only</div>
     </div>
     <div class="metric-cell">
-        <div class="val green">100%</div>
-        <div class="lbl">Failures Detected</div>
-        <div class="sub">zero misses in testing</div>
+        <div class="val green">4 of 4</div>
+        <div class="lbl">Failures Caught in Testing</div>
+        <div class="sub">zero misses on research data</div>
     </div>
     <div class="metric-cell">
         <div class="val">9 in 10</div>
-        <div class="lbl">Alerts Are Genuine</div>
-        <div class="sub">low false alarm rate</div>
+        <div class="lbl">Alerts Were Genuine</div>
+        <div class="sub">low false alarm rate in testing</div>
     </div>
     <div class="metric-cell">
-        <div class="val accent">€M+</div>
-        <div class="lbl">Batch Value at Stake</div>
-        <div class="sub">per biologics customer</div>
+        <div class="val accent">5</div>
+        <div class="lbl">Models Built &amp; Compared</div>
+        <div class="sub">from baseline to deep learning</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -552,8 +554,8 @@ st.markdown("""
 # ═══════════════════════════════════════════════════════════════
 # THE PROBLEM
 # ═══════════════════════════════════════════════════════════════
-st.markdown('<p class="s-label">The Problem</p>', unsafe_allow_html=True)
-st.markdown('<h2 class="s-title">Cold chain failures are expensive — and often preventable.</h2>', unsafe_allow_html=True)
+st.markdown('<p class="s-label">Research Question</p>', unsafe_allow_html=True)
+st.markdown('<h2 class="s-title">Cold chain failures are expensive — could they be predicted earlier?</h2>', unsafe_allow_html=True)
 st.markdown('<p class="s-sub">Every biopharma customer stores and ships product worth hundreds of thousands to millions of euros per batch. The current industry standard is a threshold alarm that fires after the damage is already done.</p>', unsafe_allow_html=True)
 
 st.markdown("""
@@ -581,6 +583,27 @@ st.markdown("""
 </div>
 <hr class="div">
 """, unsafe_allow_html=True)
+
+
+# ═══════════════════════════════════════════════════════════════
+# THE DATA
+# ═══════════════════════════════════════════════════════════════
+st.markdown('<p class="s-label">The Research Data</p>', unsafe_allow_html=True)
+st.markdown('<h2 class="s-title">Same failure pattern — two different contexts.</h2>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">No SUS sensor data was available, so two public datasets were used. A real pharmaceutical cold chain excursion (COVID-19 vaccine, Sun et al. 2022) established what failure actually looks like. The NAB industrial temperature dataset showed the identical drift-before-failure pattern and was used to train and test all five ML models.</p>', unsafe_allow_html=True)
+
+if COMPARE_SRC:
+    st.markdown(f"""
+    <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;margin-bottom:8px;">
+        <img src="{COMPARE_SRC}" style="width:100%;display:block;" alt="Pharmaceutical vs Industrial Temperature Excursions">
+    </div>
+    <p style="font-size:12px;color:#9CA3AF;margin-bottom:32px;">
+        Top: Real COVID-19 vaccine ultra-cold storage excursion — temperature drifting toward the −60°C safe limit before failure (Sun et al., Nature Scientific Data, 2022).
+        Bottom: NAB industrial machine temperature dataset used for ML training — same drift-before-failure pattern, different scale.
+    </p>
+    """, unsafe_allow_html=True)
+
+st.markdown('<hr class="div">', unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -780,9 +803,9 @@ st.markdown("""
 # ═══════════════════════════════════════════════════════════════
 # DIFFERENTIATOR
 # ═══════════════════════════════════════════════════════════════
-st.markdown('<p class="s-label">Strategic Opportunity</p>', unsafe_allow_html=True)
-st.markdown('<h2 class="s-title">A hardware company becomes an intelligence company.</h2>', unsafe_allow_html=True)
-st.markdown('<p class="s-sub">This is not an incremental feature. It is a positioning move — from selling equipment that manages cold chain to owning the outcome of protecting every batch.</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-label">If Validated — Potential Implications</p>', unsafe_allow_html=True)
+st.markdown('<h2 class="s-title">What real-world validation could unlock.</h2>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">These are not claims — they are research questions. If the model performs on real SUS sensor data the way it does on research data, the following become worth exploring.</p>', unsafe_allow_html=True)
 
 col_l, col_r = st.columns([3, 2])
 
@@ -834,9 +857,9 @@ st.markdown('<hr class="div">', unsafe_allow_html=True)
 # ═══════════════════════════════════════════════════════════════
 # CALCULATOR
 # ═══════════════════════════════════════════════════════════════
-st.markdown('<p class="s-label">Business Case</p>', unsafe_allow_html=True)
-st.markdown('<h2 class="s-title">What does early warning save per customer account?</h2>', unsafe_allow_html=True)
-st.markdown('<p class="s-sub">Adjust these inputs to reflect a real customer situation. This is the commercial conversation behind every biopharma account.</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-label">Illustrative Impact — If Validated</p>', unsafe_allow_html=True)
+st.markdown('<h2 class="s-title">What could early warning mean commercially?</h2>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">Purely illustrative. These numbers assume the research results hold on real SUS hardware — which has not been tested. This is what the research is trying to find out.</p>', unsafe_allow_html=True)
 
 col_s, col_r2 = st.columns([3, 2])
 with col_s:
@@ -898,14 +921,14 @@ st.markdown(f"""
 # ═══════════════════════════════════════════════════════════════
 st.markdown("""
 <div class="cta-block">
-    <div class="cta-eyebrow">Next Step</div>
+    <div class="cta-eyebrow">Research Goal</div>
     <h3>One dataset away from<br>a <em>real</em> answer.</h3>
     <p class="cta-sub">
-        The model is built. The framework runs on standard sensor data formats already
-        captured by SUS hardware. One shared dataset is all that stands between
-        a proof of concept and a production-ready intelligence layer.
+        The models are trained. The framework runs on standard sensor data formats.
+        The one thing this research cannot answer without real SUS data is the most
+        important thing: does it actually work on your hardware?
     </p>
-    <div class="cta-punch">One test run. A clear, evidence-based answer.</div>
+    <div class="cta-punch">One shared dataset. One honest answer.</div>
 </div>
 """, unsafe_allow_html=True)
 
