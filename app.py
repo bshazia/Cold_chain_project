@@ -45,8 +45,9 @@ footer             { visibility: hidden; }
 [data-testid="stStatusWidget"]     { display: none !important; }
 
 .block-container {
-    padding: 0 !important;
-    max-width: 100% !important;
+    padding: 0 56px 64px !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
     margin-top: 0 !important;
 }
 
@@ -54,12 +55,12 @@ footer             { visibility: hidden; }
 .top-nav {
     background: #fff;
     border-bottom: 1px solid #E5E7EB;
-    padding: 0 48px;
+    padding: 0 56px;
     height: 52px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0;
+    margin: 0 -56px;
 }
 .nav-brand {
     font-size: 13px; font-weight: 700;
@@ -86,7 +87,8 @@ footer             { visibility: hidden; }
 /* ── HERO (full-bleed dark) ── */
 .hero-full {
     background: linear-gradient(135deg, #0C1F3F 0%, #0047BB 100%);
-    padding: 64px 52px 56px;
+    padding: 64px 56px 56px;
+    margin: 0 -56px;
     position: relative;
     overflow: hidden;
 }
@@ -130,7 +132,8 @@ footer             { visibility: hidden; }
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 0; background: #fff;
     border-bottom: 1px solid #E5E7EB;
-    margin-bottom: 56px;
+    border-top: 1px solid #E5E7EB;
+    margin: 0 -56px 56px;
 }
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
