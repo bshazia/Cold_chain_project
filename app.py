@@ -61,125 +61,125 @@ footer             { visibility: hidden; }
 /* ── PAGE WRAPPER ── */
 .page {
     background: #fff;
-    padding: 36px 52px 52px;
+    padding: 0 52px 52px;
     max-width: 1080px;
     margin: 0 auto;
 }
 
-/* ── HERO ── */
-.hero {
-    border-bottom: 1px solid #E5E7EB;
-    padding-bottom: 32px;
-    margin-bottom: 32px;
+/* ── HERO (full-bleed dark) ── */
+.hero-full {
+    background: linear-gradient(135deg, #0C1F3F 0%, #0047BB 100%);
+    padding: 64px 52px 56px;
+    position: relative;
+    overflow: hidden;
 }
+.hero-full::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: rgba(147,197,253,0.07);
+    pointer-events: none;
+}
+.hero-inner { max-width: 1080px; margin: 0 auto; }
 .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #0047BB;
-    background: #EFF6FF;
-    border: 1px solid #BFDBFE;
-    border-radius: 4px;
-    padding: 4px 10px;
-    margin-bottom: 20px;
+    color: #93C5FD; background: rgba(147,197,253,0.12);
+    border: 1px solid rgba(147,197,253,0.3);
+    border-radius: 4px; padding: 4px 10px; margin-bottom: 20px;
 }
-.hero h1 {
-    font-size: 48px;
-    font-weight: 800;
-    color: #111827;
-    letter-spacing: -0.04em;
-    line-height: 1.1;
-    margin-bottom: 16px;
-    max-width: 760px;
+.hero-full h1 {
+    font-size: 52px; font-weight: 800; color: #fff;
+    letter-spacing: -0.04em; line-height: 1.08;
+    margin-bottom: 18px; max-width: 800px;
 }
-.hero h1 em {
-    font-style: normal;
-    color: #0047BB;
-}
-.hero p {
-    font-size: 16px;
-    color: #6B7280;
-    max-width: 620px;
-    line-height: 1.7;
-    margin-bottom: 24px;
+.hero-full h1 em { font-style: normal; color: #93C5FD; }
+.hero-full .hero-body {
+    font-size: 17px; color: rgba(255,255,255,0.7);
+    max-width: 600px; line-height: 1.7; margin-bottom: 28px;
 }
 .hero-notice {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #FFFBEB;
-    border: 1px solid #FCD34D;
-    border-radius: 6px;
-    padding: 8px 14px;
-    font-size: 12px;
-    color: #92400E;
-    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.35);
+    border-radius: 6px; padding: 8px 14px;
+    font-size: 12px; color: #FCD34D; font-weight: 500;
 }
 
 /* ── METRICS ROW ── */
 .metrics-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: #E5E7EB;
-    border: 1px solid #E5E7EB;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 48px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; background: #fff;
+    border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 56px;
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 .metric-cell {
-    background: #fff;
-    padding: 24px 20px;
+    background: #fff; padding: 28px 24px;
+    border-right: 1px solid #E5E7EB;
+    opacity: 0; animation: fadeUp 0.55s ease forwards;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
 }
+.metric-cell:last-child { border-right: none; }
+.metric-cell:nth-child(1) { animation-delay: 0.05s; }
+.metric-cell:nth-child(2) { animation-delay: 0.15s; }
+.metric-cell:nth-child(3) { animation-delay: 0.25s; }
+.metric-cell:nth-child(4) { animation-delay: 0.35s; }
+.metric-cell:hover { background: #F8FAFF; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,71,187,0.1); }
 .metric-cell .val {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: #111827;
-    line-height: 1;
-    margin-bottom: 6px;
+    font-size: 40px; font-weight: 800; letter-spacing: -0.04em;
+    color: #111827; line-height: 1; margin-bottom: 8px;
 }
 .metric-cell .val.accent { color: #0047BB; }
 .metric-cell .val.green  { color: #059669; }
-.metric-cell .lbl {
-    font-size: 12px;
-    font-weight: 600;
-    color: #374151;
-    margin-bottom: 2px;
-}
-.metric-cell .sub {
-    font-size: 11px;
-    color: #9CA3AF;
-}
+.metric-cell .lbl { font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 3px; }
+.metric-cell .sub { font-size: 11px; color: #9CA3AF; }
 
 /* ── SECTION ── */
 .s-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #9CA3AF;
-    margin-bottom: 6px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #0047BB; margin-bottom: 8px;
 }
 .s-title {
-    font-size: 22px;
-    font-weight: 800;
-    color: #111827;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-    line-height: 1.3;
+    font-size: 30px; font-weight: 800; color: #111827;
+    letter-spacing: -0.03em; margin-bottom: 8px; line-height: 1.2;
 }
 .s-sub {
-    font-size: 14px;
-    color: #6B7280;
-    line-height: 1.7;
-    max-width: 640px;
-    margin-bottom: 24px;
+    font-size: 15px; color: #6B7280; line-height: 1.7;
+    max-width: 640px; margin-bottom: 28px;
 }
+
+/* ── SECTION TINT ── */
+.section-tint {
+    background: #F5F8FF;
+    margin: 0 -52px;
+    padding: 40px 52px;
+    margin-bottom: 48px;
+}
+
+/* ── ABOUT ── */
+.about-card {
+    display: flex; align-items: center; gap: 28px;
+    background: #F5F8FF; border-radius: 12px;
+    border: 1px solid #DBEAFE;
+    padding: 28px 32px; margin-bottom: 32px;
+}
+.about-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: #0047BB; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; font-weight: 800; color: #fff;
+    letter-spacing: -0.02em;
+}
+.about-info h4 { font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 3px; }
+.about-info .about-title { font-size: 13px; color: #0047BB; font-weight: 600; margin-bottom: 6px; }
+.about-info p { font-size: 13px; color: #6B7280; line-height: 1.6; margin: 0; }
 
 /* ── COMPARE TABLE ── */
 .compare-tbl {
@@ -269,30 +269,22 @@ footer             { visibility: hidden; }
 
 /* ── STEPS ── */
 .step-item {
-    padding: 20px;
-    border: 1px solid #E5E7EB;
-    border-radius: 8px;
-    background: #fff;
+    padding: 24px; border-radius: 10px; background: #fff;
+    border: 1px solid #E5E7EB; position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+.step-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,71,187,0.1); }
 .step-n {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #0047BB;
-    margin-bottom: 8px;
+    font-size: 48px; font-weight: 800; color: #EFF6FF;
+    letter-spacing: -0.04em; line-height: 1; margin-bottom: 12px;
+    font-variant-numeric: tabular-nums;
 }
-.step-item h4 {
-    font-size: 13px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 6px;
+.step-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #0047BB; margin-bottom: 8px;
 }
-.step-item p {
-    font-size: 13px;
-    color: #6B7280;
-    line-height: 1.6;
-}
+.step-item h4 { font-size: 14px; font-weight: 700; color: #111827; margin-bottom: 6px; }
+.step-item p  { font-size: 13px; color: #6B7280; line-height: 1.6; }
 
 /* ── OUTCOMES ── */
 .outcome-item {
@@ -488,27 +480,28 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="page">', unsafe_allow_html=True)
-
-
 # ═══════════════════════════════════════════════════════════════
-# HERO
+# HERO (full-bleed dark, outside .page)
 # ═══════════════════════════════════════════════════════════════
 st.markdown("""
-<div class="hero">
+<div class="hero-full">
+  <div class="hero-inner">
     <div class="hero-tag">Pharmaceutical Cold Chain · Predictive Intelligence</div>
-    <h1>What if your freeze &amp; thaw platforms could predict failure <em>before</em> it happens?</h1>
-    <p>
-        A predictive intelligence layer designed for pharmaceutical cold chain hardware —
-        detecting temperature excursion risk hours in advance, giving customers real time
-        to protect their batch. Not a smarter alarm. A fundamentally different approach.
+    <h1>What if your freeze &amp; thaw platforms could<br>predict failure <em>before</em> it happens?</h1>
+    <p class="hero-body">
+        A predictive intelligence layer for pharmaceutical cold chain hardware —
+        detecting temperature excursion risk hours in advance, giving customers
+        real time to protect their batch. Not a smarter alarm. A fundamentally different approach.
     </p>
     <div class="hero-notice">
-        Proof of concept — performance numbers are based on research data and require
+        Proof of concept — numbers are based on research data and require
         validation against real SUS sensor hardware before any production commitment.
     </div>
+  </div>
 </div>
 """, unsafe_allow_html=True)
+
+st.markdown('<div class="page">', unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -584,19 +577,22 @@ st.markdown('<p class="s-sub">The system reads the same temperature data the har
 st.markdown("""
 <div class="three-col" style="margin-bottom:0">
     <div class="step-item">
-        <div class="step-n">Step 01</div>
-        <h4>Reads the sensor stream</h4>
-        <p>Continuously monitors temperature readings from existing cold chain sensors. No new hardware required — works with what is already there.</p>
+        <div class="step-n">01</div>
+        <div class="step-label">Reads the data</div>
+        <h4>Sensor stream, no new hardware</h4>
+        <p>Monitors temperature readings from existing cold chain sensors continuously. Works with what is already there.</p>
     </div>
     <div class="step-item">
-        <div class="step-n">Step 02</div>
-        <h4>Identifies early warning patterns</h4>
-        <p>Detects subtle signals — gradual temperature drift, rising instability, time outside optimal band — that appear hours before a failure event.</p>
+        <div class="step-n">02</div>
+        <div class="step-label">Finds the pattern</div>
+        <h4>Hours before any threshold is crossed</h4>
+        <p>Detects subtle drift, rising instability, time outside optimal band — signals invisible to a simple alarm.</p>
     </div>
     <div class="step-item">
-        <div class="step-n">Step 03</div>
-        <h4>Issues an advance alert</h4>
-        <p>Sends notification while product is still safe — giving the team hours to act, not minutes to react after the fact.</p>
+        <div class="step-n">03</div>
+        <div class="step-label">Fires the alert</div>
+        <h4>Time to act, not time to react</h4>
+        <p>Sends advance notification while product is still safe — giving the team hours to reroute, replace cooling, or escalate.</p>
     </div>
 </div>
 <hr class="div">
@@ -795,7 +791,7 @@ with col_l:
         </div>
         <div class="diff-row">
             <div class="diff-key">Validation path</div>
-            <div class="diff-val">System is built. Runs on standard sensor data formats. Real-world validation can begin with one data-sharing agreement.</div>
+            <div class="diff-val">System is built. Runs on standard sensor data formats. Real-world validation can begin with one shared dataset.</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -857,6 +853,27 @@ st.markdown('<hr class="div">', unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════════
+# ABOUT
+# ═══════════════════════════════════════════════════════════════
+st.markdown("""
+<div class="about-card">
+    <div class="about-avatar">BJ</div>
+    <div class="about-info">
+        <h4>Bshazia Jatoi</h4>
+        <div class="about-title">Business Intelligence · Single Use Support</div>
+        <p>
+            Built entirely outside working hours as a personal research project.
+            Five ML models trained and validated on pharmaceutical cold chain data —
+            motivated by a genuine belief that SUS hardware can do more than monitor.
+            It can predict.
+        </p>
+    </div>
+</div>
+<hr class="div">
+""", unsafe_allow_html=True)
+
+
+# ═══════════════════════════════════════════════════════════════
 # CTA
 # ═══════════════════════════════════════════════════════════════
 st.markdown("""
@@ -865,7 +882,7 @@ st.markdown("""
     <h3>One dataset away from<br>a <em>real</em> answer.</h3>
     <p class="cta-sub">
         The model is built. The framework runs on standard sensor data formats already
-        captured by SUS hardware. One data-sharing agreement is all that stands between
+        captured by SUS hardware. One shared dataset is all that stands between
         a proof of concept and a production-ready intelligence layer.
     </p>
     <div class="cta-punch">One test run. A clear, evidence-based answer.</div>
