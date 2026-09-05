@@ -15,6 +15,10 @@ st.markdown("""
 
 html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 
+/* Force white background regardless of OS dark mode */
+.stApp, [data-testid="stAppViewContainer"], [data-testid="stMain"],
+section.stMain, .main, body { background: #ffffff !important; color: #111827 !important; }
+
 /* Hide Streamlit chrome */
 #MainMenu          { visibility: hidden; }
 header             { visibility: hidden; height: 0 !important; }
@@ -414,6 +418,18 @@ footer             { visibility: hidden; }
     border-top: 1px solid #E5E7EB;
     line-height: 1.8;
 }
+
+/* ── SLIDERS: replace Streamlit red with brand blue ── */
+[role="slider"] {
+    background-color: #0047BB !important;
+    border-color: #0047BB !important;
+}
+[role="slider"]:focus {
+    box-shadow: 0 0 0 4px rgba(0, 71, 187, 0.18) !important;
+}
+/* Track fill — Streamlit uses st-ah for the active (filled) portion */
+.st-ah { background-color: #0047BB !important; }
+[data-testid="stSliderTickBar"] { display: none !important; }
 </style>
 """, unsafe_allow_html=True)
 
