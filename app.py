@@ -468,6 +468,14 @@ footer             { visibility: hidden; }
     line-height: 1.8;
 }
 
+/* ── Hide Streamlit anchor/link icons on headers ── */
+[data-testid="stHeaderActionElements"] { display: none !important; }
+a.anchor-link { display: none !important; }
+.stMarkdown h1 a, .stMarkdown h2 a, .stMarkdown h3 a { display: none !important; }
+
+/* ── Hide nav brand dot ── */
+.nav-brand-dot { display: none !important; }
+
 /* ── SLIDERS: replace Streamlit red with brand blue ── */
 [role="slider"] {
     background-color: #0047BB !important;
