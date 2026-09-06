@@ -940,6 +940,109 @@ st.markdown(f"""
 
 
 # ═══════════════════════════════════════════════════════════════
+# LIVE PREDICTION DEMO
+# ═══════════════════════════════════════════════════════════════
+st.markdown('<p class="s-label">Live Model</p>', unsafe_allow_html=True)
+st.markdown('<h2 class="s-title">Try the ensemble — in real time.</h2>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">The trained ensemble (Random Forest + XGBoost + LightGBM) is running live. Adjust the sensor readings below and watch the risk score update instantly.</p>', unsafe_allow_html=True)
+
+_FEATURE_SLIDERS = [
+    ("avg_temp_last_6hours",  "Average temperature — last 6 hours (°C)",         -5.0, 30.0,  6.5, 0.1),
+    ("temp_3hours_ago",       "Temperature 3 hours ago (°C)",                     -5.0, 30.0,  5.8, 0.1),
+    ("rolling_std_3hour",     "Temperature variability — 3hr standard deviation",  0.0,  5.0,  1.2, 0.05),
+    ("duration_outside_safe", "Hours spent outside the 2–8°C safe zone",           0.0, 12.0,  0.5, 0.1),
+    ("temp_drop_last_1hour",  "Temp change last hour (°C, positive = warming)",   -5.0,  5.0,  0.8, 0.1),
+    ("hour_of_day",           "Hour of day",                                         0,   23,   14,  1),
+]
+
+_col_sliders, _col_result = st.columns([3, 2])
+
+with _col_sliders:
+    _vals = {}
+    for _feat, _label, _lo, _hi, _def, _step in _FEATURE_SLIDERS:
+        if _feat == "hour_of_day":
+            _vals[_feat] = float(st.slider(_label, int(_lo), int(_hi), int(_def), int(_step)))
+        else:
+            _vals[_feat] = st.slider(_label, float(_lo), float(_hi), float(_def), float(_step))
+    st.markdown("""
+    <p style="font-size:11px;color:#9CA3AF;margin-top:8px;line-height:1.6;">
+    Features are computed from raw sensor temperature readings.
+    The safe zone for pharma cold chain is typically 2–8°C.
+    </p>""", unsafe_allow_html=True)
+
+with _col_result:
+    if _MODELS_OK:
+        _X = [[_vals[f] for f, *_ in _FEATURE_SLIDERS]]
+        _p_rf   = float(_RF.predict_proba(_X)[0, 1])
+        _p_xgb  = float(_XGB.predict_proba(_X)[0, 1])
+        _p_lgbm = float(_LGBM.predict_proba(_X)[0, 1])
+        _risk   = round((_p_rf + _p_xgb + _p_lgbm) / 3, 3)
+        _alert  = _risk >= _THRESHOLD
+        _pct    = int(_risk * 100)
+
+        _rc = "#DC2626" if _alert else "#059669"
+        _status_txt  = "⚠ High Risk — Alert would fire" if _alert else "✓ Low Risk — Normal"
+        _status_bg   = "#FEF2F2" if _alert else "#F0FDF4"
+
+        def _bar(p, threshold):
+            filled = int(p * 20)
+            c = "#DC2626" if p >= threshold else "#059669"
+            bar = '█' * filled + '░' * (20 - filled)
+            return f'<span style="font-family:monospace;color:{c};font-size:11px;">{bar}</span> <span style="font-weight:700;color:{c};">{p:.0%}</span>'
+
+        st.markdown(f"""
+        <div style="background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:28px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;
+                        text-transform:uppercase;color:#9CA3AF;margin-bottom:6px;">
+                Ensemble Risk Score
+            </div>
+            <div style="font-size:72px;font-weight:800;color:{_rc};
+                        letter-spacing:-0.04em;line-height:1;margin-bottom:14px;">
+                {_pct}%
+            </div>
+            <div style="background:{_status_bg};border:1px solid {_rc};border-radius:6px;
+                        padding:10px 14px;font-size:13px;font-weight:600;
+                        color:{_rc};margin-bottom:22px;">
+                {_status_txt}
+            </div>
+            <div style="font-size:11px;color:#9CA3AF;font-weight:600;
+                        text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;">
+                Model breakdown
+            </div>
+            <div style="font-size:13px;color:#374151;">
+                <div style="display:flex;flex-direction:column;gap:2px;padding:7px 0;
+                            border-bottom:1px solid #F3F4F6;">
+                    <span style="font-size:11px;color:#9CA3AF;">Random Forest</span>
+                    {_bar(_p_rf, _THRESHOLD)}
+                </div>
+                <div style="display:flex;flex-direction:column;gap:2px;padding:7px 0;
+                            border-bottom:1px solid #F3F4F6;">
+                    <span style="font-size:11px;color:#9CA3AF;">XGBoost</span>
+                    {_bar(_p_xgb, _THRESHOLD)}
+                </div>
+                <div style="display:flex;flex-direction:column;gap:2px;padding:7px 0;">
+                    <span style="font-size:11px;color:#9CA3AF;">LightGBM</span>
+                    {_bar(_p_lgbm, _THRESHOLD)}
+                </div>
+            </div>
+            <p style="font-size:11px;color:#9CA3AF;margin-top:16px;line-height:1.6;">
+                Threshold: {_THRESHOLD}. Research prototype — not validated on SUS hardware.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.markdown("""
+        <div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;
+                    padding:28px;text-align:center;color:#9CA3AF;">
+            <div style="font-size:32px;margin-bottom:12px;">🔒</div>
+            <div style="font-size:13px;">Model files not available on this deployment.</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+st.markdown('<hr class="div">', unsafe_allow_html=True)
+
+
+# ═══════════════════════════════════════════════════════════════
 # CTA
 # ═══════════════════════════════════════════════════════════════
 st.markdown("""
