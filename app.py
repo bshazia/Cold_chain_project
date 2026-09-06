@@ -930,8 +930,8 @@ st.markdown(f"""
         <div class="about-title">Working Student · Data Engineer · Single Use Support</div>
         <p>
             Five ML models trained and validated on pharmaceutical cold chain research data —
-            Motivated by seeing cold chain challenges firsthand at Single Use Support —
-            and a genuine belief that the hardware can do more than monitor.
+            Five ML models trained and validated on pharmaceutical cold chain research data —
+            motivated by a genuine belief that SUS hardware can do more than monitor.
             It can predict.
         </p>
     </div>
