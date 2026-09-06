@@ -515,7 +515,7 @@ st.markdown("""
     </div>
     <div class="nav-status">
         <div class="nav-status-dot"></div>
-        Research Project — Awaiting Real SUS Data for Validation
+        Research Project — Awaiting Real Biopharma Data for Validation
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -535,8 +535,8 @@ st.markdown("""
         Results are promising. Real data validation is the missing piece.
     </p>
     <div class="hero-notice">
-        All results are from a public research dataset — not from SUS production hardware.
-        Performance on real SUS sensors is unknown until validated. That is exactly what this research is asking for.
+        All results are from a public research dataset — not from real biopharma production hardware.
+        Performance on real pharmaceutical cold chain sensors is unknown until validated. That is exactly what this research is asking for.
     </div>
   </div>
 </div>
@@ -613,7 +613,7 @@ st.markdown("""
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">The Research Data</p>', unsafe_allow_html=True)
 st.markdown('<h2 class="s-title">Same failure pattern — two different contexts.</h2>', unsafe_allow_html=True)
-st.markdown('<p class="s-sub">No SUS sensor data was available, so two public datasets were used. A real pharmaceutical cold chain excursion (COVID-19 vaccine, Sun et al. 2022) established what failure actually looks like. The NAB industrial temperature dataset showed the identical drift-before-failure pattern and was used to train and test all five ML models.</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">No real biopharma cold chain sensor data was available, so two public datasets were used. A real pharmaceutical cold chain excursion (COVID-19 vaccine, Sun et al. 2022) established what failure actually looks like. The NAB industrial temperature dataset showed the identical drift-before-failure pattern and was used to train and test all five ML models.</p>', unsafe_allow_html=True)
 
 if COMPARE_SRC:
     st.markdown(f"""
@@ -764,9 +764,9 @@ st.markdown("""
     <h5>Important — Proof of Concept</h5>
     <p>
         The 8+ hour advance warning was measured on a validated pharmaceutical cold chain research dataset —
-        not on SUS production hardware. Real-world performance will depend on the specific characteristics
-        of SUS sensors and customer cold chain conditions.
-        <strong>Validation against real Single Use Support data is the defined next step.</strong>
+        not on real pharmaceutical production hardware. Real-world performance will depend on the specific characteristics
+        of biopharma cold chain sensors and customer conditions.
+        <strong>Validation against real pharmaceutical cold chain data is the defined next step.</strong>
     </p>
 </div>
 <hr class="div">
@@ -828,7 +828,7 @@ st.markdown("""
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">If Validated — Potential Implications</p>', unsafe_allow_html=True)
 st.markdown('<h2 class="s-title">What real-world validation could unlock.</h2>', unsafe_allow_html=True)
-st.markdown('<p class="s-sub">These are not claims — they are research questions. If the model performs on real SUS sensor data the way it does on research data, the following become worth exploring.</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">These are not claims — they are research questions. If the model performs on real biopharma cold chain data the way it does on research data, the following become worth exploring.</p>', unsafe_allow_html=True)
 
 col_l, col_r = st.columns([3, 2])
 
@@ -882,7 +882,7 @@ st.markdown('<hr class="div">', unsafe_allow_html=True)
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">Illustrative Impact — If Validated</p>', unsafe_allow_html=True)
 st.markdown('<h2 class="s-title">What could early warning mean commercially?</h2>', unsafe_allow_html=True)
-st.markdown('<p class="s-sub">Purely illustrative. These numbers assume the research results hold on real SUS hardware — which has not been tested. This is what the research is trying to find out.</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">Purely illustrative. These numbers assume the research results hold on real pharmaceutical cold chain hardware — which has not been tested. This is what the research is trying to find out.</p>', unsafe_allow_html=True)
 
 col_s, col_r2 = st.columns([3, 2])
 with col_s:
@@ -907,7 +907,7 @@ with col_r2:
         <div class="rl">Remaining exposure</div>
         <div class="rv" style="font-size:22px">€{remaining:,.0f}</div>
         <p class="rn">Illustrative estimate. Actual figures require real-world validation
-        of model performance on SUS hardware and customer data.</p>
+        of model performance on real biopharma cold chain hardware and customer data.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -930,7 +930,7 @@ st.markdown(f"""
         <div class="about-title">Working Student · Data Engineer · Single Use Support</div>
         <p>
             Five ML models trained and validated on pharmaceutical cold chain research data —
-            motivated by a genuine belief that SUS hardware can do more than monitor.
+            motivated by a genuine belief that pharmaceutical cold chain hardware can do more than monitor.
             It can predict.
         </p>
     </div>
@@ -1026,7 +1026,7 @@ with _col_result:
                 </div>
             </div>
             <p style="font-size:11px;color:#9CA3AF;margin-top:16px;line-height:1.6;">
-                Threshold: {_THRESHOLD}. Research prototype — not validated on SUS hardware.
+                Threshold: {_THRESHOLD}. Research prototype — not validated on real biopharma hardware.
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -1051,7 +1051,7 @@ st.markdown("""
     <h3>One dataset away from<br>a <em>real</em> answer.</h3>
     <p class="cta-sub">
         The models are trained. The framework runs on standard sensor data formats.
-        The one thing this research cannot answer without real SUS data is the most
+        The one thing this research cannot answer without real biopharma data is the most
         important thing: does it actually work on your hardware?
     </p>
     <div class="cta-punch">One shared dataset. One honest answer.</div>
@@ -1068,7 +1068,7 @@ st.markdown("""
     <span style="font-size:11px">
     Proof of concept validated on pharmaceutical cold chain research data
     (NAB Machine Temperature Dataset + Sun et al. 2022, Nature Scientific Data).
-    Real-world performance on SUS production hardware requires data validation.
+    Real-world performance on pharmaceutical production hardware requires data validation.
     </span>
 </div>
 """, unsafe_allow_html=True)
