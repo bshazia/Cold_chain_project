@@ -946,7 +946,7 @@ st.markdown('<hr class="div">', unsafe_allow_html=True)
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">Live Model</p>', unsafe_allow_html=True)
 st.markdown('<h2 class="s-title">Try the ensemble — in real time.</h2>', unsafe_allow_html=True)
-st.markdown('<p class="s-sub">The trained ensemble (Random Forest + XGBoost + LightGBM) is running live. Adjust the sensor readings below and watch the risk score update instantly.</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">Five models were built and compared — the final ensemble combines the 3 best-performing ones (Random Forest + XGBoost + LightGBM). Adjust the sensor readings below and watch the risk score update instantly.</p>', unsafe_allow_html=True)
 
 _FEATURE_SLIDERS = [
     ("avg_temp_last_6hours",  "Average temperature — last 6 hours (°C)",         -5.0, 30.0,  6.5, 0.1),
