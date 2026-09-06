@@ -3,6 +3,9 @@ import numpy as np
 import plotly.graph_objects as go
 import base64
 import os
+import json
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 
 # ── Load images ────────────────────────────────────────────────
 def _load_img(filename, mime="image/jpeg"):
@@ -18,6 +21,23 @@ def _load_img(filename, mime="image/jpeg"):
 
 PHOTO_SRC    = _load_img("shaziabyat.jpg")
 COMPARE_SRC  = _load_img("comparission_chart.png", "image/png")
+
+# ── Load ensemble model (cached so it loads once per session) ──
+@st.cache_resource
+def load_models():
+    try:
+        import joblib
+        from pathlib import Path
+        MODEL_DIR = Path(__file__).parent / "production_models"
+        rf_m   = joblib.load(MODEL_DIR / "rf_model.pkl")
+        xgb_m  = joblib.load(MODEL_DIR / "xgb_model.pkl")
+        lgbm_m = joblib.load(MODEL_DIR / "lgbm_model.pkl")
+        config  = json.loads((MODEL_DIR / "ensemble_config.json").read_text())
+        return rf_m, xgb_m, lgbm_m, config["threshold"], True
+    except Exception:
+        return None, None, None, 0.5, False
+
+_RF, _XGB, _LGBM, _THRESHOLD, _MODELS_OK = load_models()
 
 st.set_page_config(
     page_title="Cold Chain Intelligence | Single Use Support",

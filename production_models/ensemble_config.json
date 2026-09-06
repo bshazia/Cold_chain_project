@@ -1,0 +1,9 @@
+{
+  "threshold": 0.5,
+  "models": [
+    "rf",
+    "xgb",
+    "lgbm"
+  ],
+  "strategy": "soft_voting_mean"
+}

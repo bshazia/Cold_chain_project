@@ -1,0 +1,8 @@
+[
+  "avg_temp_last_6hours",
+  "temp_3hours_ago",
+  "rolling_std_3hour",
+  "duration_outside_safe",
+  "temp_drop_last_1hour",
+  "hour_of_day"
+]
