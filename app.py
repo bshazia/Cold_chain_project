@@ -575,6 +575,31 @@ st.markdown("""
 
 
 # ═══════════════════════════════════════════════════════════════
+# ABOUT
+# ═══════════════════════════════════════════════════════════════
+_avatar_html = (
+    f'<img src="{PHOTO_SRC}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;">'
+    if PHOTO_SRC else
+    '<div class="about-avatar">BJ</div>'
+)
+st.markdown(f"""
+<div class="about-card">
+    {_avatar_html}
+    <div class="about-info">
+        <h4>Shazia Jatoi</h4>
+        <div class="about-title">Working Student · Data Engineer · Single Use Support</div>
+        <p>
+            Five ML models trained and validated on pharmaceutical cold chain research data —
+            <strong>motivated by a genuine belief that SUS hardware can do more than monitor.
+            It can predict.</strong>
+        </p>
+    </div>
+</div>
+<hr class="div">
+""", unsafe_allow_html=True)
+
+
+# ═══════════════════════════════════════════════════════════════
 # THE PROBLEM
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">Research Question</p>', unsafe_allow_html=True)
@@ -914,30 +939,6 @@ with col_r2:
 st.markdown('<hr class="div">', unsafe_allow_html=True)
 
 
-# ═══════════════════════════════════════════════════════════════
-# ABOUT
-# ═══════════════════════════════════════════════════════════════
-_avatar_html = (
-    f'<img src="{PHOTO_SRC}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;">'
-    if PHOTO_SRC else
-    '<div class="about-avatar">BJ</div>'
-)
-st.markdown(f"""
-<div class="about-card">
-    {_avatar_html}
-    <div class="about-info">
-        <h4>Shazia Jatoi</h4>
-        <div class="about-title">Working Student · Data Engineer · Single Use Support</div>
-        <p>
-            Five ML models trained and validated on pharmaceutical cold chain research data —
-            Five ML models trained and validated on pharmaceutical cold chain research data —
-            motivated by a genuine belief that SUS hardware can do more than monitor.
-            It can predict.
-        </p>
-    </div>
-</div>
-<hr class="div">
-""", unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════════
