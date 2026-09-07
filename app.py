@@ -954,7 +954,7 @@ st.markdown('<hr class="div">', unsafe_allow_html=True)
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">Live Model</p>', unsafe_allow_html=True)
 st.markdown('<h2 class="s-title">Try the ensemblein real time.</h2>', unsafe_allow_html=True)
-st.markdown('<p class="s-sub">Five models were built and comparedthe final ensemble combines the 3 best-performing ones (Random Forest + XGBoost + LightGBM). Adjust the sensor readings below and watch the risk score update instantly.</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">Five models were built and compared. The final ensemble combines the 3 best-performing ones. Adjust the sensor readings below and watch the risk score update instantly.</p>', unsafe_allow_html=True)
 
 _FEATURE_SLIDERS = [
     ("avg_temp_last_6hours",  "Average temperaturelast 6 hours (°C)",         -5.0, 30.0,  6.5, 0.1),
@@ -1022,21 +1022,21 @@ with _col_result:
             <div style="font-size:13px;color:#374151;">
                 <div style="display:flex;flex-direction:column;gap:2px;padding:7px 0;
                             border-bottom:1px solid #F3F4F6;">
-                    <span style="font-size:11px;color:#9CA3AF;">Random Forest</span>
+                    <span style="font-size:11px;color:#9CA3AF;">Model A</span>
                     {_bar(_p_rf, _THRESHOLD)}
                 </div>
                 <div style="display:flex;flex-direction:column;gap:2px;padding:7px 0;
                             border-bottom:1px solid #F3F4F6;">
-                    <span style="font-size:11px;color:#9CA3AF;">XGBoost</span>
+                    <span style="font-size:11px;color:#9CA3AF;">Model B</span>
                     {_bar(_p_xgb, _THRESHOLD)}
                 </div>
                 <div style="display:flex;flex-direction:column;gap:2px;padding:7px 0;">
-                    <span style="font-size:11px;color:#9CA3AF;">LightGBM</span>
+                    <span style="font-size:11px;color:#9CA3AF;">Model C</span>
                     {_bar(_p_lgbm, _THRESHOLD)}
                 </div>
             </div>
             <p style="font-size:11px;color:#9CA3AF;margin-top:16px;line-height:1.6;">
-                Threshold: {_THRESHOLD}. Research prototypenot validated on real biopharma hardware.
+                Research prototype. Not validated on real biopharma hardware.
             </p>
         </div>
         """, unsafe_allow_html=True)
