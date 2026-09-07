@@ -40,7 +40,7 @@ def load_models():
 _RF, _XGB, _LGBM, _THRESHOLD, _MODELS_OK = load_models()
 
 st.set_page_config(
-    page_title="Cold Chain Intelligence | Single Use Support",
+    page_title="Cold Chain Intelligence",
     page_icon="🧬",
     layout="wide",
     initial_sidebar_state="collapsed"
