@@ -595,7 +595,7 @@ st.markdown(f"""
     {_avatar_html}
     <div class="about-info">
         <h4>Shazia Jatoi</h4>
-        <div class="about-title">Working Student · Data Engineer · Single Use Support</div>
+        <div class="about-title">Working Student Data Engineer @Single Use Support</div>
         <p>
             Five ML models trained and validated on pharmaceutical cold chain research data,
             <strong>motivated by a genuine belief that SUS hardware can do more than monitor.
@@ -611,7 +611,7 @@ st.markdown(f"""
 # THE PROBLEM
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">Research Question</p>', unsafe_allow_html=True)
-st.markdown('<h2 class="s-title">Cold chain failures are expensive. Could they be predicted earlier?</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="s-title">Cold chain failures are expensive, Could they be predicted earlier?</h2>', unsafe_allow_html=True)
 st.markdown('<p class="s-sub">Every biopharma customer stores and ships product worth hundreds of thousands to millions of euros per batch. The current industry standard is a threshold alarm that fires after the damage is already done.</p>', unsafe_allow_html=True)
 
 st.markdown("""
@@ -645,7 +645,7 @@ st.markdown("""
 # THE DATA
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">The Research Data</p>', unsafe_allow_html=True)
-st.markdown('<h2 class="s-title">Same failure patterntwo different contexts.</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="s-title">Same failure pattern, two different contexts.</h2>', unsafe_allow_html=True)
 st.markdown('<p class="s-sub">No real biopharma cold chain sensor data was available, so two public datasets were used. A real pharmaceutical cold chain excursion (COVID-19 vaccine, Sun et al. 2022) established what failure actually looks like. The NAB industrial temperature dataset showed the identical drift-before-failure pattern and was used to train and test all five ML models.</p>', unsafe_allow_html=True)
 
 if COMPARE_SRC:
