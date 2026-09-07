@@ -534,11 +534,11 @@ st.markdown("""
 st.markdown("""
 <div class="hero-full">
   <div class="hero-inner">
-    <div class="hero-tag">Masters Research · Machine Learning · Pharma Cold Chain</div>
+    <div class="hero-tag">Masters Research · ML/DL · Pharma Cold Chain</div>
     <h1>Can cold chain failures be predicted<br><em>hours before</em> they happen?</h1>
     <p class="hero-body">
-        A personal research project applying machine learning to pharmaceutical cold chain
-        temperature datainvestigating whether subtle patterns that precede equipment
+        A personal research project applying ML/DL to pharmaceutical cold chain
+        temperature data investigating whether subtle patterns that precede equipment
         failure can be detected in advance. Five models built and tested on public research data.
         Results are promising. Real data validation is the missing piece.
     </p>
@@ -597,7 +597,7 @@ st.markdown(f"""
         <h4>Shazia Jatoi</h4>
         <div class="about-title">Working Student Data Engineer @Single Use Support</div>
         <p>
-            Five ML models trained and validated on pharmaceutical cold chain research data,
+            Five ML/DL models trained and validated on pharmaceutical cold chain research data,
             <strong>motivated by a genuine belief that SUS hardware can do more than monitor.
             It can predict.</strong>
         </p>
@@ -622,7 +622,7 @@ st.markdown("""
             <li><span class="li-icon red">·</span> Alarm fires after temperature exits the safe range</li>
             <li><span class="li-icon red">·</span> By alert time, the batch is already compromised</li>
             <li><span class="li-icon red">·</span> No time left to reroute, replace cooling, or recover</li>
-            <li><span class="li-icon red">·</span> Subtle pre-failure signalsgradual drift, instabilitygo unnoticed</li>
+            <li><span class="li-icon red">·</span> Subtle pre-failure signals gradual drift, instability go unnoticed</li>
             <li><span class="li-icon red">·</span> Outcome: batch discarded, loss logged</li>
         </ul>
     </div>
@@ -654,8 +654,8 @@ if COMPARE_SRC:
         <img src="{COMPARE_SRC}" style="width:100%;display:block;" alt="Pharmaceutical vs Industrial Temperature Excursions">
     </div>
     <p style="font-size:12px;color:#9CA3AF;margin-bottom:32px;">
-        Top: Real COVID-19 vaccine ultra-cold storage excursiontemperature drifting toward the −60°C safe limit before failure (Sun et al., Nature Scientific Data, 2022).
-        Bottom: NAB industrial machine temperature dataset used for ML trainingsame drift-before-failure pattern, different scale.
+        Top: Real COVID-19 vaccine ultra-cold storage excursion temperature drifting toward the −60°C safe limit before failure (Sun et al., Nature Scientific Data, 2022).
+        Bottom: NAB industrial machine temperature dataset used for ML/DL training same drift-before-failure pattern, different scale.
     </p>
     """, unsafe_allow_html=True)
 
@@ -701,7 +701,7 @@ st.markdown('<p class="s-label">Demonstration</p>', unsafe_allow_html=True)
 st.markdown('<h2 class="s-title">The difference 8 hours makes.</h2>', unsafe_allow_html=True)
 st.markdown('<p class="s-sub">Same temperature trace. Same sensor data. Toggle to see what a traditional alarm catches versus what predictive intelligence catches.</p>', unsafe_allow_html=True)
 
-mode = st.radio("", ["Traditional Threshold Alarm", "Predictive IntelligenceEarly Warning"],
+mode = st.radio("", ["Traditional Threshold Alarm", "Predictive Intelligence Early Warning"],
                 horizontal=True, label_visibility="collapsed")
 
 fig = go.Figure()
@@ -717,7 +717,7 @@ fig.add_trace(go.Scatter(x=HOURS[:DRIFT_I+1], y=TEMP[:DRIFT_I+1],
     hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
 
 if "Traditional" in mode:
-    # Show full drift + excursionalarm fires too late
+    # Show full drift + excursion alarm fires too late
     fig.add_trace(go.Scatter(x=HOURS[DRIFT_I:FAIL_I+1], y=TEMP[DRIFT_I:FAIL_I+1],
         mode='lines', name='Pre-failure drift',
         line=dict(color='#D97706', width=2),
@@ -740,7 +740,7 @@ else:
         line=dict(color='#D97706', width=2),
         hovertemplate='%{y:.1f}°C  h%{x:.1f}<extra></extra>'))
 
-    # What would have happenedfaint dashed red (no intervention)
+    # What would have happened faint dashed red (no intervention)
     fig.add_trace(go.Scatter(x=HOURS[ALERT_I:], y=TEMP[ALERT_I:],
         mode='lines', name='Without action (what-if)',
         line=dict(color='#DC2626', width=1.5, dash='dot'),
@@ -841,7 +841,7 @@ st.markdown("""
     <td class="td-name">Deep Learning (neural network)</td>
     <td>4 of 4</td>
     <td>~9.2 hours</td>
-    <td>Higherconservative by design</td>
+    <td>Higher conservative by design</td>
 </tr>
 <tr class="row-best">
     <td class="td-name td-best">Combined ensemble model</td>
@@ -859,9 +859,9 @@ st.markdown("""
 # ═══════════════════════════════════════════════════════════════
 # DIFFERENTIATOR
 # ═══════════════════════════════════════════════════════════════
-st.markdown('<p class="s-label">If ValidatedPotential Implications</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-label">If Validated Potential Implications</p>', unsafe_allow_html=True)
 st.markdown('<h2 class="s-title">What real-world validation could unlock.</h2>', unsafe_allow_html=True)
-st.markdown('<p class="s-sub">These are not claimsthey are research questions. If the model performs on real biopharma cold chain data the way it does on research data, the following become worth exploring.</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">These are not claims they are research questions. If the model performs on real biopharma cold chain data the way it does on research data, the following become worth exploring.</p>', unsafe_allow_html=True)
 
 col_l, col_r = st.columns([3, 2])
 
@@ -915,7 +915,7 @@ st.markdown('<hr class="div">', unsafe_allow_html=True)
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">Illustrative ImpactIf Validated</p>', unsafe_allow_html=True)
 st.markdown('<h2 class="s-title">What could early warning mean commercially?</h2>', unsafe_allow_html=True)
-st.markdown('<p class="s-sub">Purely illustrative. These numbers assume the research results hold on real pharmaceutical cold chain hardwarewhich has not been tested. This is what the research is trying to find out.</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-sub">Purely illustrative. These numbers assume the research results hold on real pharmaceutical cold chain hardware which has not been tested. This is what the research is trying to find out.</p>', unsafe_allow_html=True)
 
 col_s, col_r2 = st.columns([3, 2])
 with col_s:
@@ -957,9 +957,9 @@ st.markdown('<h2 class="s-title">Try the ensemblein real time.</h2>', unsafe_all
 st.markdown('<p class="s-sub">Five models were built and compared. The final ensemble combines the 3 best-performing ones. Adjust the sensor readings below and watch the risk score update instantly.</p>', unsafe_allow_html=True)
 
 _FEATURE_SLIDERS = [
-    ("avg_temp_last_6hours",  "Average temperaturelast 6 hours (°C)",         -5.0, 30.0,  6.5, 0.1),
+    ("avg_temp_last_6hours",  "Average temperature last 6 hours (°C)",         -5.0, 30.0,  6.5, 0.1),
     ("temp_3hours_ago",       "Temperature 3 hours ago (°C)",                     -5.0, 30.0,  5.8, 0.1),
-    ("rolling_std_3hour",     "Temperature variability3hr standard deviation",  0.0,  5.0,  1.2, 0.05),
+    ("rolling_std_3hour",     "Temperature variability 3hr standard deviation",  0.0,  5.0,  1.2, 0.05),
     ("duration_outside_safe", "Hours spent outside the 2–8°C safe zone",           0.0, 12.0,  0.5, 0.1),
     ("temp_drop_last_1hour",  "Temp change last hour (°C, positive = warming)",   -5.0,  5.0,  0.8, 0.1),
     ("hour_of_day",           "Hour of day",                                         0,   23,   14,  1),
@@ -1060,7 +1060,7 @@ st.markdown("""
     <div class="cta-eyebrow">Research Goal</div>
     <h3>One dataset away from<br>a <em>real</em> answer.</h3>
     <p class="cta-sub">
-        The models are trained. The framework runs on standard sensor data formats.
+        The models are trained. The frame work runs on standard sensor data formats.
         The one thing this research cannot answer without real biopharma data is the most
         important thing: does it actually work on your hardware?
     </p>
@@ -1074,7 +1074,7 @@ st.markdown("""
 # ═══════════════════════════════════════════════════════════════
 st.markdown("""
 <div class="footer">
-    Cold Chain IntelligencePredictive Temperature Monitoring Research<br>
+    Cold Chain Intelligence Predictive Temperature Monitoring Research<br>
     <span style="font-size:11px">
     Proof of concept validated on pharmaceutical cold chain research data
     (NAB Machine Temperature Dataset + Sun et al. 2022, Nature Scientific Data).
