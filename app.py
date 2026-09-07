@@ -869,20 +869,20 @@ with col_l:
     st.markdown("""
     <div class="diff-list">
         <div class="diff-row">
-            <div class="diff-key">Competitive position</div>
-            <div class="diff-val">No freeze & thaw equipment provider currently offers predictive intelligence. First-mover opportunity in a premium segment.</div>
+            <div class="diff-key">Earlier intervention</div>
+            <div class="diff-val">Shifting from reactive alerts to proactive risk scores gives cold chain operators hours to act before product is lost.</div>
         </div>
         <div class="diff-row">
-            <div class="diff-key">Pricing power</div>
-            <div class="diff-val">Smart hardware commands a premium. An intelligence subscription sits alongside the hardware sale as recurring revenue.</div>
+            <div class="diff-key">Reduced batch losses</div>
+            <div class="diff-val">Even a single prevented excursion per year can offset the cost of an entire monitoring platform for a mid-size biopharma customer.</div>
         </div>
         <div class="diff-row">
-            <div class="diff-key">Customer retention</div>
-            <div class="diff-val">Customers integrated into an intelligence platform have a significantly higher switching cost than hardware-only customers.</div>
+            <div class="diff-key">Compliance confidence</div>
+            <div class="diff-val">Predictive audit trails strengthen GDP documentation. Regulators increasingly expect proactive risk management, not just post-event records.</div>
         </div>
         <div class="diff-row">
-            <div class="diff-key">Brand alignment</div>
-            <div class="diff-val">"Protect Every Drop" becomes measurable and verifiablenot a marketing statement but a quantified commitment.</div>
+            <div class="diff-key">Data leverage</div>
+            <div class="diff-val">Cold chain sensor data already exists in most operations. This model runs on it without new hardware or new infrastructure.</div>
         </div>
         <div class="diff-row">
             <div class="diff-key">Validation path</div>
@@ -894,15 +894,15 @@ with col_l:
 with col_r:
     st.markdown("""
     <div class="highlight-box">
-        <h3>The market is ready for this.</h3>
+        <h3>No new hardware needed.</h3>
         <p>
-            Gene therapies, monoclonal antibodies, and advanced biologics
-            are increasing in both value and volume. A single batch failure
-            can cost hundreds of thousands to millions of eurosand damage
-            the relationship with the customer far beyond the product value.
+            Most cold chain operations already capture the temperature data
+            this model needs. Validation requires only a shared dataset,
+            not a new sensor deployment.
             <br><br>
-            Biopharma manufacturers are actively seeking ways to de-risk
-            their cold chain. This is that solution.
+            Gene therapies, monoclonal antibodies, and advanced biologics
+            are increasing in both value and volume. The cold chain risk
+            they carry is growing with them.
         </p>
     </div>
     """, unsafe_allow_html=True)
