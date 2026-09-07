@@ -619,11 +619,11 @@ st.markdown("""
     <div class="panel panel-red">
         <h4>How it works today — Threshold Alarms</h4>
         <ul>
-            <li><span class="li-icon red">—</span> Alarm fires after temperature exits the safe range</li>
-            <li><span class="li-icon red">—</span> By alert time, the batch is already compromised</li>
-            <li><span class="li-icon red">—</span> No time left to reroute, replace cooling, or recover</li>
-            <li><span class="li-icon red">—</span> Subtle pre-failure signals — gradual drift, instability — go unnoticed</li>
-            <li><span class="li-icon red">—</span> Outcome: batch discarded, loss logged</li>
+            <li><span class="li-icon red">·</span> Alarm fires after temperature exits the safe range</li>
+            <li><span class="li-icon red">·</span> By alert time, the batch is already compromised</li>
+            <li><span class="li-icon red">·</span> No time left to reroute, replace cooling, or recover</li>
+            <li><span class="li-icon red">·</span> Subtle pre-failure signals — gradual drift, instability — go unnoticed</li>
+            <li><span class="li-icon red">·</span> Outcome: batch discarded, loss logged</li>
         </ul>
     </div>
     <div class="panel panel-green">
