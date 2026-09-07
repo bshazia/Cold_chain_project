@@ -611,7 +611,7 @@ st.markdown(f"""
 # THE PROBLEM
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">Research Question</p>', unsafe_allow_html=True)
-st.markdown('<h2 class="s-title">Cold chain failures are expensive. Could they be predicted earlier?</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="s-title">Cold chain failures are expensive, Could they be predicted earlier?</h2>', unsafe_allow_html=True)
 st.markdown('<p class="s-sub">Every biopharma customer stores and ships product worth hundreds of thousands to millions of euros per batch. The current industry standard is a threshold alarm that fires after the damage is already done.</p>', unsafe_allow_html=True)
 
 st.markdown("""
@@ -645,7 +645,7 @@ st.markdown("""
 # THE DATA
 # ═══════════════════════════════════════════════════════════════
 st.markdown('<p class="s-label">The Research Data</p>', unsafe_allow_html=True)
-st.markdown('<h2 class="s-title">Same failure patterntwo different contexts.</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="s-title">Same failure pattern, two different contexts.</h2>', unsafe_allow_html=True)
 st.markdown('<p class="s-sub">No real biopharma cold chain sensor data was available, so two public datasets were used. A real pharmaceutical cold chain excursion (COVID-19 vaccine, Sun et al. 2022) established what failure actually looks like. The NAB industrial temperature dataset showed the identical drift-before-failure pattern and was used to train and test all five ML models.</p>', unsafe_allow_html=True)
 
 if COMPARE_SRC:
