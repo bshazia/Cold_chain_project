@@ -595,7 +595,7 @@ st.markdown(f"""
     {_avatar_html}
     <div class="about-info">
         <h4>Shazia Jatoi</h4>
-        <div class="about-title">Working Student · Data Engineer · Single Use Support</div>
+        <div class="about-title">Working Student Data Engineer @Single Use Support</div>
         <p>
             Five ML models trained and validated on pharmaceutical cold chain research data,
             <strong>motivated by a genuine belief that SUS hardware can do more than monitor.
