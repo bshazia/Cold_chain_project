@@ -913,7 +913,7 @@ st.markdown('<hr class="div">', unsafe_allow_html=True)
 # ═══════════════════════════════════════════════════════════════
 # CALCULATOR
 # ═══════════════════════════════════════════════════════════════
-st.markdown('<p class="s-label">Illustrative ImpactIf Validated</p>', unsafe_allow_html=True)
+st.markdown('<p class="s-label">Illustrative Impact If Validated</p>', unsafe_allow_html=True)
 st.markdown('<h2 class="s-title">What could early warning mean commercially?</h2>', unsafe_allow_html=True)
 st.markdown('<p class="s-sub">Purely illustrative. These numbers assume the research results hold on real pharmaceutical cold chain hardware which has not been tested. This is what the research is trying to find out.</p>', unsafe_allow_html=True)
 
